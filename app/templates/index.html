@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+{% block title %}
+
+		The home page
+
+{% endblock %}
+{% block content %}
+{% block head %}
+<style>
+.imag{
+    width: 300px;
+    height: 200px;
+
+}
+.img-circle{
+    width:160px;
+    height:160px;
+}
+div.gallery {
+        border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+        border: 1px solid #777;
+}
+
+div.gallery img{
+        width: 100%;
+        height:70%;
+}
+</style>
+{% endblock %}
+    <div class="responsive">
+    <div class="gallery">
+    	<img src="{{ url_for('static', filename = 'best-shopping.jpg') }}" class="img-responsive">
+
+    </div> 		
+    </div>
+
+
+
+
+       <section id="category" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Category</h2>
+                    <h3 class="section-subheading text-muted"> Enter Into World Of Items</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href= "{{ url_for('sellertable.categorytable' , typ ='electrical_appliance') }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ url_for('static', filename = 'appliances.jpg') }}" class="img-responsive imag" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Electrical Appliances</h4>
+                        <p class="text-muted">Electronics World</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href= "{{ url_for('sellertable.categorytable' , typ = 'clothing' )}}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ url_for('static', filename = 'clothing.jpg') }}" class="img-responsive imag" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Shirt,jeans,T-shirt etc.</h4>
+                        <p class="text-muted">Cloth World</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href= "{{ url_for('sellertable.categorytable' , typ = 'footwear') }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ url_for('static', filename = 'footwear.jpg') }}" class="img-responsive imag" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Shoes,Sports,Sandal</h4>
+                        <p class="text-muted">Footwear World</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href= "{{ url_for('sellertable.categorytable' , typ = 'Gadgets') }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ url_for('static', filename = 'gadgets.jpg') }}" class="img-responsive imag" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Mobile,laptop,iphone,ipad</h4>
+                        <p class="text-muted">Gadgets World</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="{{ url_for('sellertable.categorytable' , typ = 'Sports') }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ url_for('static', filename = 'sport.jpg') }}" class="img-responsive imag" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Cricket,hockey,Tennis,Football</h4>
+                        <p class="text-muted">Sports World</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="{{ url_for('sellertable.categorytable' , typ = 'Kitchenitems') }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ url_for('static', filename = 'kitchen.jpg') }}" class="img-responsive imag" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Glasses,Plates,Crockery,Jug....</h4>
+                        <p class="text-muted">Kitchen World</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    </div>
+    <br><br><br><br><br>
+    <!-- Developer -->
+    <section id="developer" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                    <h2 class="section-heading" style="text-align: left;">Developed By</h2>
+            </div>
+            <br><br>
+            <div>
+                <div>
+                    <div class="creator">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                        <img src="{{ url_for('static', filename = 'gulshanmittal.jpg') }}" class="img-responsive img-circle" alt="">
+                        <h4>Gulshan Mittal</h4>
+                        <p class="text-muted">Developer</p>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                        <img src="{{ url_for('static', filename = 'nirvan.jpg') }}" class="img-responsive img-circle" alt="">
+                        <h4>Nirvan Singhania</h4>
+                        <p class="text-muted">Developer</p>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                        <img src="{{ url_for('static', filename = 'yash.jpg') }}" class="img-responsive img-circle" alt="">
+                        <h4>Yash Agarwal</h4>
+                        <p class="text-muted">Developer</p>
+                        </div>
+                        </div>
+
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <br><br><br><br><br>
+
+    <div class="jumbotron">
+     <br><br><br>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">Shopping Portal Team</h3>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" validate >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name." style="border-color: green">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address." style="border-color: green">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number." style="border-color: green">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message *" id="message" style="border-color: green"></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="button" class="btn btn-primary" class=>Send Message</button>  <!-- need to be change -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Our Website 2017</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

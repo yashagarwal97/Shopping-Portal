@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <!--<link href="css/bootstrap.min.css" rel="stylesheet">--> 
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+   
+	<style>
+	.navbar
+{
+    margin-bottom: 0;
+}
+#search{
+    width: 130px;
+-webkit-transition: width 0.3s ease-in-out;
+        transition: width 0.3s ease-in-out;
+}
+#search:focus{
+        width: 150%;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block head %}
+       
+	<title>
+		{% block title %}{% endblock %}
+	</title>
+	{% endblock %}
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+</head>
+
+
+   <nav id="mainNav" class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-md-3">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="{{ url_for('users.home' ) }}">Home</a>
+            </div>
+                <div class="col-sm-3 col-md-3 col-md-6">     
+        <form class="navbar-form" role="search" action="/tags/displayproducts" method="POST">
+        <div class="input-group">
+             <div class="input-group-btn">
+                <button class="btn btn-default" type="submit" name="search-button"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+            <input type="text" class="form-control" placeholder="Search" name="tagstring" id="search">
+           
+        </div>
+        </form>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="login">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="/#contact">Contact</a>
+                    </li>
+
+                {% if not g.user.is_authenticated %}
+                    
+
+                          <li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login
+        			<span class="caret"></span></a>
+       					 <ul class="dropdown-menu">
+          <li><a href="{{ url_for('users.loginBuyer') }}">As a buyer</a></li>
+          <li><a href="{{ url_for('users.loginSeller') }}">As a seller</a></li>
+        </ul></li>
+
+
+
+
+                          <li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Register
+        			<span class="caret"></span></a>
+       					 <ul class="dropdown-menu">
+          <li><a href="{{ url_for('users.registerBuyer') }}">As a buyer</a></li>
+          <li><a href="{{ url_for('users.registerSeller') }}">As a seller</a></li>
+        </ul></li>
+
+                {% endif %}
+                {% if g.user.is_authenticated %}
+
+
+                    {% if g.user.buyerseller %}
+                    <li>
+                        <a class="page-scroll" href="{{ url_for('sellertable.sellertable') }}">Sell</a>
+                    </li>
+                    {% endif %}
+
+                    {% if not g.user.buyerseller %}
+                    <li>
+                        <a class="page-scroll" href="{{ url_for('buyertable.buyertable') }}"><span class="glyphicon glyphicon-shopping-cart"></span>View Cart</a>
+                    </li>
+                    {% endif %}
+                 <li>
+                        <a class="page-scroll" href="{{ url_for('users.logout') }}">Logout</a>
+                    </li>
+                {% endif %}
+
+
+
+
+
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    
+    </nav>
+    <body>
+    <div id="content">
+     
+    {% block content %}{% endblock %}
+    </div>
+
+    
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+
+{% extends "base.html" %}
+{% block title %}
+
+Form for entering items
+	
+{% endblock %}
+{% block head %}
+<style type="text/css">
+	table{
+			width: 100%;
+
+	}
+	td{
+			font-weight: 500;
+			font-size: 130%;
+	}
+	.head{
+			font-weight: 600;
+			font-size: 150%;
+			height: 50px;
+			padding: 15px;
+	}
+
+	.mytxt{
+			width: 300px;
+			height: 40px;
+	}
+	.myarea{
+			width: 300px;
+	}
+	h2{
+			text-align: center;
+	}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+<h2><i>Please Enter the product you wish to sell</i></h2>
+<br/><br/><br/>
+<div class="input-form">
+<form  method="POST" enctype="multipart/form-data" validate>
+
+<table style="width: 100%;">
+<tr>
+	<td class="head">Enter name :<br/></td>
+	<td>
+<input type="text" name="name" class="mytxt"><br/>
+</td>
+</tr><br/>
+<tr>
+<td class="head">
+Enter quantity: <br/>
+</td><td>
+<input type="number" name="quantity" class="mytxt"></td></tr>
+<tr><td class="head">
+
+Enter file:</td><td>
+<input type="file" name="photo"><br/></td></tr>
+<tr><td class="head">
+Enter description:
+</td><td>
+<textarea name="description" class="myarea" rows="5"></textarea><br/>
+</td></tr><br/>
+<tr><td class="head">
+Enter specifications:
+</td><td><br/>
+<textarea name="specifications" class="myarea" rows="3"></textarea><br/>
+</td></tr><tr><td class="head">
+Enter shipping:</td><td>
+<textarea name="shipping" class="myarea" row="2"></textarea>
+<br/>
+</td></tr>
+<tr><td class="head">
+Enter tags:
+</td><td><br/>
+<input type="text" name="tags" class="mytxt"><br/>
+</td></tr>
+<tr><td class="head">
+Enter price:
+</td><td><br/>
+<input type="number" name="price" class="mytxt"><br/>
+</td></tr><br/>
+<tr><td class="head">
+<br/>
+Enter Category:
+</td>
+<td>
+<br/><br/>
+<select name="category">
+  <option value="electrical_appliance">electrical_appliance</option>
+  <option value="clothing">clothing</option>
+  <option value="footwear">footwear</option>
+  <option value="Gadgets">Gadgets</option>
+   <option value="Sports">Sports</option> 
+  <option value="Kitchenitems">Kitchenitems</option>
+</select><br>
+<br/>
+<input type="submit" class="btn btn-primary" value="Submit">
+</td>
+</tr>
+	
+</table>
+	</form>
+
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+.navbar
+{
+    margin-bottom: 0;
+}
+#search{
+    width: 130px;
+-webkit-transition: width 0.3s ease-in-out;
+        transition: width 0.3s ease-in-out;
+}
+#search:focus{
+        width: 100%;
+}

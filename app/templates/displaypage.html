@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+
+		This is the products page
+	
+{% endblock %}
+{% block head %}
+<style>
+table{
+		width: 100%;
+}
+td{
+		padding: 10px;
+		font-weight: 600;
+}
+.my{
+		width: 300px;
+		height: 40px;
+}
+.h{
+		font-weight: 600;
+		text-align: center;
+	}
+.hf{
+		font-weight: 600;
+	}
+.headering{
+		
+				border-bottom: 3px solid gray;
+				padding-bottom: 0;
+				text-align: center;
+				color: darkgrey;
+	
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="jumbotron">
+<h1 class="h"> List of Searched items </h1>
+<br/><br/>
+<h2  class="headering">Items Table </h2>
+<table>
+	<tr>
+		
+		<td ><h2 class="hf">Name</h2></td>
+		<td ><h2 class="hf">Description</h2></td>
+		<td ></td>
+	</tr>
+	<br/><br/><br/>
+	{% if itemlist==[] %}
+	<p>Sorry, we have no products with the given tags </p>
+	{% endif %}
+	{% for x in itemlist %}
+	<tr>
+		<td>{{ x.name }}</td>
+		<td>{{ x.description }}</td>
+		<td><a href="/tags/{{ x.id }}"><i>View this item</i></a></td>
+	</tr>
+	<br/><br/>
+	{% endfor %}
+</table>
+	<div>
+</div>
+{% endblock %}

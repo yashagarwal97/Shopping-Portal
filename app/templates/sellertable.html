@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+{% block title %}
+	This is the seller's table
+{% endblock %}
+
+{% block head %}
+<style>
+table{
+		width: 100%;
+	}
+td{
+		padding: 15px;
+		font-weight: 600;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+	
+<table>
+	<tr>
+		<td><h2><i> #      </i></h2></td>
+		<td><h2><i> Item Name </i></h2></td>
+		<td><h2><i> Quantity  </i></h2></td>
+	</tr>
+	
+	<tbody id="itemtable">
+	</tbody>
+</table>
+<br>
+<p id="message"></p>
+<br/><br/><br/>
+<table>
+<tr>
+<td style="width: 50%;">
+<button type="submit"  class="btn btn-primary" id="update-item-button" value="UPDATE">UPDATE ALL ITEMS IN MY CART</button> </td>
+<td>
+<button type="submit" id="add-item-button" value="ADD ITEM" class="btn btn-primary">ADD A NEW ITEM TO MY ACCOUNT</button>
+</td>
+</tr>
+</table>
+	</div>
+</div>
+
+
+{% block javascript %}
+    <script type="text/javascript">
+        {% include "sellertable.js" %}
+    </script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+
+{% endblock %}

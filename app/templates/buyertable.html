@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% block title %}
+This is the buyer's table
+	
+{% endblock %}
+{% block head %}
+<style>
+table{
+		width: 100%;
+	}
+td{
+		padding: 15px;
+		font-weight: 600;
+}
+.my{
+		width: 300px;
+		height: 40px;
+}
+.h{
+		text-align: center;
+		font-weight: 600;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+<h2 class="h">MY CART ITEMS</h2>
+<table>
+	<tr>
+		<td><h2><i> # </i></h2></td>
+		<td><h2><i> Item name </i></h2></td>
+		<td><h2><i> Quantity  </i></h2></td>
+		<td></td>
+	</tr>
+	<br/><br/>
+	<br/>
+	<tbody id="itemtable">
+	</tbody>
+</table>
+<br/><br/>
+<p id="message"></p>
+<br/>
+<br/><br/><br/>
+
+<table>
+<tr>
+<td style="width: 50%;">
+<button type="submit" id="update-item-button" value="UPDATE" class="btn btn-primary my">UPDATE</button>
+</td><td>
+<button type="submit" id ="buy-button" value="BUY" class="btn btn-primary my">BUY</button>
+</td></tr></table>
+</div>
+</div>
+{% block javascript %}
+    <script type="text/javascript">
+        {% include "buyertable.js" %}
+    </script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,134 @@
+
+{% extends "base.html" %}
+{% block title %}
+
+    This is the product description page  
+{% endblock %}
+
+{% block head %}
+
+
+{% block javascript %}
+    <script type="text/javascript">
+        {% include "main.js" %}
+    </script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+
+<script type= "text/javascript">
+$(document).ready(function (){
+        console.log('lol')
+                        viewAllReviews({{ item.id }});
+
+                });
+</script>  
+
+    
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <style>
+            #productimage
+        {
+                height: 100% ;
+                width:   100% ;
+
+
+        }
+           .headings{color : blue;}
+        .h{
+                font-weight: 600;
+                text-align: center;
+        }
+     </style>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Main Container -->
+        
+        <div class="container">
+            <section id="productDetails">
+                <div class="row">
+                    <div class="col-md-5">
+ 	
+                            {% if item.quantity > 0 %}              
+                                    <img src="{{ url_for('static', filename= item.imageurl ) }}"  id="productimage" alt="{{ item.imageurl }}">
+                       {% endif %}
+			
+                    {% if item.quantity <= 0 %}
+                <img src="{{ url_for('static', filename = 'outofstock.jpg') }}">
+		
+                     {% endif %}
+                            </div>
+                    <div class="col-md-7">
+                        <h2><strong>{{ item.name }}</strong></h2>
+                        <h3 style="color: green"><strong>${{ item.price }}</strong></h3	>
+                    <br/>
+                    <div>
+                    	<h4 class="headings">Descriptions:</h4>
+                    	<br/>
+                        <div class="card-block">
+                        			{{ item.description}}
+                                </div>
+                     </div>
+                     <hr>
+                      <div>
+                    	<h4 class="headings">Specifications:</h4>
+                    	<br/>
+                        <div class="card-block">
+                                    {{ item.specifications}}
+                                   
+                        </div>
+                     </div>
+                     <hr>
+                     <div>
+                    	<h4 class="headings">Shipping details:</h4>
+                    	<br/>
+                        <div class="card-block">
+                                    {{ item.shipping}}
+                                </div>
+                     </div>
+                    </div>
+                    </div>
+                    </section>
+		   <p id="message"></p>
+                   {% if not g.user.buyerseller and g.user.is_authenticated %}
+			{% if item.quantity > 0 %}
+                        <button type="submit" value="addtocart" id="add-to-cart" onclick="addtobuyerscart({{ item.id }})">ADD TO CART</button>
+                	{% endif %}
+			
+			{% if item.quantity <= 0 %}
+			<input type="submit" value ="SEND ME A NOTIFICATION" onclick="sendnotification({{ g.user.id }},{{ item.id }})">
+			{% endif %}
+			  
+		{% endif %}
+
+                    </div>
+        <br/><br/><br/><br/>
+         <h2 class="h">Reviews</h2>
+        <!--<form method="post" form action="/addReview/{{item.id}}">-->
+        <div class="col-md-5">
+           <b> Review :</b> <input type="text" class="form-control" placeholder="Type Review" style="width: 50%; border-color: rgb(229, 103, 23, 0.8); "  name='Review' id="Review"><br>
+           {% if g.user.is_authenticated %}
+            <button type="submit" name='add' value='add' class="btn btn-primary" id="addreview" onclick="review1({{ item.id }})"> ADD Review</button>
+            {% endif %}
+            <br/><br/>
+        </div>
+        <div id="text-review">
+        </div>
+
+                <table id="allreview" class="table table-striped">
+                        <thead>
+                                <tr>
+                                        <td>Username</td>
+                                        <td >Review</td>
+                                </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                </table>
+
+            <br />
+
+{% endblock %}

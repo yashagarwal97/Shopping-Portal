@@ -1,0 +1,75 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section">
+	<div class="center">
+		<h1 align="center">Sign Up Your Account</h1>
+		<br>
+		<form method="POST" >
+		<table style="width: 30%" align="center">
+        <tr style="text-align: center;">
+        	<td>
+        		{{form.email.label(class="col-sm-4",style='text-align: center;')}}
+        	</td>
+        	<td >
+        		{{ form.email(placeholder="E.g. brucewayne@wayne.com", class="form-control",style='text-align: center;') }} 
+        	</td>
+        </tr>
+         {% if form.email.errors %}  
+        <tr style="text-align: center;">
+        <td colspan="2" style="color: red"> {{ form.email.errors[0]}}
+        </td>
+        </tr>
+        {% endif %}
+        	<tr>
+        	<td>
+        		{{form.password.label(class="col-sm-4")}}
+        	</td>
+			<td>        	
+        		{{ form.password(class="form-control") }}
+        	</td>
+        	</tr>
+          {% if form.password.errors %}  
+         <tr style="text-align: center;">
+            <td colspan="2" style="color: red"> {{ form.password.errors[0]}}
+            </td>
+        </tr>
+        {% endif %}
+        	<tr>
+        	<td>
+        		{{form.confirm_password.label(class="col-sm-4")}}
+        	</td>
+			<td>        	
+        		{{ form.confirm_password(class="form-control") }}
+        	</td>
+        	</tr>
+        {% if form.confirm_password.errors %}  
+        <tr style="text-align: center;">
+        <td colspan="2" style="color: red"> {{ form.confirm_password.errors[0]}}
+        </td>
+        </tr>
+        {% endif %}
+        <tr>
+        	<td>
+        		{{form.name.label(class="col-sm-4")}}
+        	</td>
+        	<td>
+        		{{form.name(placeholder="E.g. ashwinhegde", class="form-control")}}
+  			</td>
+  		</tr>
+        {% if form.name.errors %}  
+  		<tr style="text-align: center;">
+        <td colspan="2" style="color: red"> {{ form.name.errors[0]}}
+        </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                {{form.submit(class="btn btn-success")}}
+            </td>
+        </tr>
+       </table>
+        </form>
+	</div>
+</div>
+{% endblock %}
